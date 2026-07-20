@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Timer - HIIT Trainer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⏱️ Workout Timer</h1>
+            <p>HIIT Interval Training</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Settings Panel -->
+            <div class="settings-panel">
+                <h2>⚙️ Einstellungen</h2>
+                
+                <div class="setting-group">
+                    <label for="rounds">Runden:</label>
+                    <div class="input-group">
+                        <button class="btn-small" onclick="decreaseRounds()">−</button>
+                        <input type="number" id="rounds" min="1" max="99" value="5">
+                        <button class="btn-small" onclick="increaseRounds()">+</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label for="workTime">Arbeit (Sekunden):</label>
+                    <div class="input-group">
+                        <button class="btn-small" onclick="decreaseWorkTime()">−</button>
+                        <input type="number" id="workTime" min="5" max="300" value="30">
+                        <button class="btn-small" onclick="increaseWorkTime()">+</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label for="restTime">Pause (Sekunden):</label>
+                    <div class="input-group">
+                        <button class="btn-small" onclick="decreaseRestTime()">−</button>
+                        <input type="number" id="restTime" min="5" max="300" value="15">
+                        <button class="btn-small" onclick="increaseRestTime()">+</button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label for="prepareTime">Vorbereitung (Sekunden):</label>
+                    <div class="input-group">
+                        <button class="btn-small" onclick="decreasePrepareTime()">−</button>
+                        <input type="number" id="prepareTime" min="0" max="60" value="10">
+                        <button class="btn-small" onclick="increasePrepareTime()">+</button>
+                    </div>
+                </div>
+
+                <div class="setting-group checkbox">
+                    <label>
+                        <input type="checkbox" id="soundEnabled" checked>
+                        🔊 Ton aktivieren
+                    </label>
+                </div>
+
+                <div class="setting-group checkbox">
+                    <label>
+                        <input type="checkbox" id="vibrationEnabled" checked>
+                        📳 Vibration aktivieren
+                    </label>
+                </div>
+            </div>
+
+            <!-- Timer Display -->
+            <div class="timer-display">
+                <div class="phase-indicator" id="phaseIndicator">Vorbereitung</div>
+                
+                <div class="timer-circle">
+                    <svg class="progress-ring" width="300" height="300">
+                        <circle class="progress-ring-circle" stroke="#ddd" fill="transparent" stroke-width="8" r="140" cx="150" cy="150" />
+                        <circle class="progress-ring-fill" stroke="#4CAF50" fill="transparent" stroke-width="8" r="140" cx="150" cy="150" />
+                    </svg>
+                    <div class="timer-text">
+                        <span class="time" id="timeDisplay">10</span>
+                        <span class="label" id="timeLabel">Sekunden</span>
+                    </div>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">Runde</span>
+                        <span class="stat-value" id="currentRound">1</span>/<span id="totalRounds">5</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Phase</span>
+                        <span class="stat-value" id="phaseText">VORBEREITUNG</span>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="btn btn-primary" id="startBtn" onclick="startTimer()">▶️ Start</button>
+                    <button class="btn btn-secondary" id="pauseBtn" onclick="pauseTimer()" disabled>⏸️ Pause</button>
+                    <button class="btn btn-danger" onclick="resetTimer()">🔄 Zurücksetzen</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-section">
+            <div class="progress-label">Gesamter Fortschritt</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0%</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
