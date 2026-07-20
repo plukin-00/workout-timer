@@ -233,7 +233,7 @@ function tick() {
 function phaseComplete() {
     // Play sound only once when phase ends
     if (!soundPlayedForCurrentPhase) {
-        playBeep(2);
+        playBeep(1);
         triggerVibration(200);
         soundPlayedForCurrentPhase = true;
     }
@@ -275,8 +275,8 @@ function workoutComplete() {
     document.getElementById('startBtn').disabled = false;
     document.getElementById('pauseBtn').disabled = true;
     
-    // Final celebration beeps
-    playBeep(3);
+    // Final beep
+    playBeep(1);
     triggerVibration(300);
     
     const phaseElement = document.getElementById('phaseIndicator');
