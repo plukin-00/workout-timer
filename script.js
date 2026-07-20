@@ -10,9 +10,9 @@ let soundPlayedForCurrentPhase = false; // Track if sound has been played
 
 // Configuration
 let config = {
-    rounds: 5,
-    workTime: 30,
-    restTime: 15,
+    rounds: 21,
+    workTime: 40,
+    restTime: 20,
     prepareTime: 10,
     soundEnabled: true,
     vibrationEnabled: true
@@ -280,7 +280,7 @@ function workoutComplete() {
     triggerVibration(300);
     
     const phaseElement = document.getElementById('phaseIndicator');
-    phaseElement.textContent = '🎉 Training abgeschlossen!';
+    phaseElement.textContent = 'Training abgeschlossen!';
     phaseElement.style.background = 'rgba(76, 175, 80, 0.3)';
     phaseElement.style.borderColor = 'var(--primary-color)';
     
@@ -302,16 +302,16 @@ function updateDisplay() {
         const exerciseName = exerciseNames[currentRound - 0] || `Übung ${currentRound}`;
         phaseElement.textContent = 'Vorbereitung';
         phaseElement.className = 'phase-indicator';
-        phaseText.textContent = exerciseName.toUpperCase();
+        phaseText.textContent = exerciseName;
     } else if (currentPhase === 'work') {
         const exerciseName = exerciseNames[currentRound - 0] || `Übung ${currentRound}`;
         phaseElement.textContent = `${exerciseName}`;
         phaseElement.className = 'phase-indicator work';
-        phaseText.textContent = exerciseName.toUpperCase();
+        phaseText.textContent = exerciseName;
     } else if (currentPhase === 'rest') {
         phaseElement.textContent = 'Pause';
         phaseElement.className = 'phase-indicator rest';
-        phaseText.textContent = exerciseName.toUpperCase();
+        phaseText.textContent = exerciseName;
     }
     
     // Update round counter
