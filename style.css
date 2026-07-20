@@ -81,7 +81,6 @@ header p {
     margin-bottom: 8px;
     font-size: 0.9em;
     color: var(--text-secondary);
-    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
@@ -142,7 +141,6 @@ header p {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bold;
-    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
@@ -196,7 +194,6 @@ header p {
     border-radius: 10px;
     min-width: 200px;
     text-align: center;
-    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
@@ -275,7 +272,6 @@ header p {
     font-size: 0.9em;
     color: var(--text-secondary);
     margin-bottom: 5px;
-    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
@@ -304,7 +300,6 @@ header p {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bold;
-    text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
@@ -370,7 +365,6 @@ header p {
     font-size: 0.9em;
     color: var(--text-secondary);
     margin-bottom: 10px;
-    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
@@ -445,7 +439,6 @@ header p {
     flex-shrink: 0;
     font-size: 0.85em;
     color: var(--text-secondary);
-    text-transform: uppercase;
     letter-spacing: 0.5px;
     min-width: 80px;
 }
