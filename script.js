@@ -299,18 +299,19 @@ function updateDisplay() {
     const phaseText = document.getElementById('phaseText');
     
     if (currentPhase === 'prepare') {
-        phaseElement.textContent = '⏳ Vorbereitung';
+        const exerciseName = exerciseNames[currentRound - 0] || `Übung ${currentRound}`;
+        phaseElement.textContent = 'Vorbereitung';
         phaseElement.className = 'phase-indicator';
-        phaseText.textContent = 'VORBEREITUNG';
+        phaseText.textContent = exerciseName.toUpperCase();
     } else if (currentPhase === 'work') {
         const exerciseName = exerciseNames[currentRound - 0] || `Übung ${currentRound}`;
-        phaseElement.textContent = `💪 ${exerciseName}`;
+        phaseElement.textContent = `${exerciseName}`;
         phaseElement.className = 'phase-indicator work';
         phaseText.textContent = exerciseName.toUpperCase();
     } else if (currentPhase === 'rest') {
-        phaseElement.textContent = '😮‍💨 Pause';
+        phaseElement.textContent = 'Pause';
         phaseElement.className = 'phase-indicator rest';
-        phaseText.textContent = 'PAUSE';
+        phaseText.textContent = exerciseName.toUpperCase();
     }
     
     // Update round counter
