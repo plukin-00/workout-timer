@@ -6,6 +6,7 @@ let currentPhase = 'prepare'; // 'prepare', 'work', 'rest'
 let timeRemaining = 0;
 let totalTime = 0;
 let timerInterval = null;
+let soundPlayedForCurrentPhase = false; // Track if sound has been played
 
 // Configuration
 let config = {
@@ -175,6 +176,7 @@ function resetTimer() {
     currentPhase = 'prepare';
     timeRemaining = config.prepareTime;
     totalTime = calculateTotalTime();
+    soundPlayedForCurrentPhase = false;
     
     document.getElementById('startBtn').disabled = false;
     document.getElementById('pauseBtn').disabled = true;
@@ -193,6 +195,7 @@ function startTimer() {
             currentRound = 1;
             currentPhase = 'prepare';
             totalTime = calculateTotalTime();
+            soundPlayedForCurrentPhase = false;
         }
         
         isRunning = true;
@@ -221,9 +224,6 @@ function tick() {
     
     if (timeRemaining < 0) {
         phaseComplete();
-    } else if (timeRemaining <= 3 && timeRemaining > 0) {
-        playBeep(1);
-        triggerVibration();
     }
     
     updateDisplay();
@@ -231,16 +231,22 @@ function tick() {
 }
 
 function phaseComplete() {
-    playBeep(2);
-    triggerVibration(200);
+    // Play sound only once when phase ends
+    if (!soundPlayedForCurrentPhase) {
+        playBeep(2);
+        triggerVibration(200);
+        soundPlayedForCurrentPhase = true;
+    }
     
     if (currentPhase === 'prepare') {
         currentPhase = 'work';
         timeRemaining = config.workTime;
+        soundPlayedForCurrentPhase = false; // Reset for next phase
     } else if (currentPhase === 'work') {
         if (currentRound < config.rounds) {
             currentPhase = 'rest';
             timeRemaining = config.restTime;
+            soundPlayedForCurrentPhase = false; // Reset for next phase
         } else {
             // Workout complete
             workoutComplete();
@@ -251,6 +257,7 @@ function phaseComplete() {
         if (currentRound <= config.rounds) {
             currentPhase = 'work';
             timeRemaining = config.workTime;
+            soundPlayedForCurrentPhase = false; // Reset for next phase
         } else {
             // Workout complete
             workoutComplete();
@@ -269,7 +276,6 @@ function workoutComplete() {
     document.getElementById('pauseBtn').disabled = true;
     
     // Final celebration beeps
-    playBeep(3);
     playBeep(3);
     triggerVibration(300);
     
