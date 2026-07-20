@@ -17,11 +17,74 @@ let config = {
     vibrationEnabled: true
 };
 
+// Exercise names
+let exerciseNames = [];
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     loadSettings();
+    initializeExerciseNames();
     resetTimer();
 });
+
+// Exercise Names Functions
+function initializeExerciseNames() {
+    loadSettings();
+    exerciseNames = [];
+    
+    // Load saved exercise names from localStorage
+    const saved = localStorage.getItem('exerciseNames');
+    if (saved) {
+        exerciseNames = JSON.parse(saved);
+    } else {
+        // Initialize with default names
+        for (let i = 0; i < config.rounds; i++) {
+            exerciseNames.push(`Übung ${i + 1}`);
+        }
+    }
+    
+    renderExerciseList();
+}
+
+function renderExerciseList() {
+    const exerciseList = document.getElementById('exerciseList');
+    exerciseList.innerHTML = '';
+    
+    for (let i = 0; i < config.rounds; i++) {
+        const item = document.createElement('div');
+        item.className = 'exercise-item';
+        
+        const label = document.createElement('label');
+        label.textContent = `Runde ${i + 1}:`;
+        
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = `Übung ${i + 1}`;
+        input.value = exerciseNames[i] || `Übung ${i + 1}`;
+        input.dataset.round = i;
+        input.addEventListener('change', (e) => {
+            exerciseNames[i] = e.target.value || `Übung ${i + 1}`;
+            saveExerciseNames();
+        });
+        
+        item.appendChild(label);
+        item.appendChild(input);
+        exerciseList.appendChild(item);
+    }
+}
+
+function saveExerciseNames() {
+    localStorage.setItem('exerciseNames', JSON.stringify(exerciseNames));
+}
+
+function toggleExercisePanel() {
+    const panel = document.getElementById('exercisePanel');
+    panel.classList.toggle('active');
+    
+    if (panel.classList.contains('active')) {
+        renderExerciseList();
+    }
+}
 
 // Settings Functions
 function loadSettings() {
@@ -39,6 +102,7 @@ function updateSettings() {
     
     if (config.rounds !== oldRounds) {
         currentRound = Math.min(currentRound, config.rounds);
+        initializeExerciseNames();
     }
     
     if (!isRunning) {
@@ -233,9 +297,10 @@ function updateDisplay() {
         phaseElement.className = 'phase-indicator';
         phaseText.textContent = 'VORBEREITUNG';
     } else if (currentPhase === 'work') {
-        phaseElement.textContent = '💪 Arbeit';
+        const exerciseName = exerciseNames[currentRound - 1] || `Übung ${currentRound}`;
+        phaseElement.textContent = `💪 ${exerciseName}`;
         phaseElement.className = 'phase-indicator work';
-        phaseText.textContent = 'ARBEIT';
+        phaseText.textContent = exerciseName.toUpperCase();
     } else if (currentPhase === 'rest') {
         phaseElement.textContent = '😮‍💨 Pause';
         phaseElement.className = 'phase-indicator rest';
