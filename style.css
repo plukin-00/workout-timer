@@ -182,6 +182,8 @@ header p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 600px;
 }
 
 .phase-indicator {
@@ -215,6 +217,7 @@ header p {
     width: 300px;
     height: 300px;
     margin: 30px 0;
+    flex-shrink: 0;
 }
 
 .progress-ring {
@@ -290,6 +293,7 @@ header p {
     justify-content: center;
     margin-top: 20px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .btn {
@@ -525,19 +529,23 @@ header p {
 
     .timer-display {
         order: 1;
+        min-height: auto;
+        padding: 30px 20px;
     }
 
     .timer-circle {
-        width: 250px;
-        height: 250px;
+        width: 280px;
+        height: 280px;
+        margin: 20px 0;
     }
 
     .timer-text .time {
-        font-size: 3em;
+        font-size: 3.5em;
     }
 
     .stats {
         gap: 20px;
+        margin: 20px 0;
     }
 
     .controls {
@@ -554,40 +562,82 @@ header p {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+    .container {
+        padding: 0;
+    }
+
     header h1 {
-        font-size: 1.5em;
+        font-size: 1.8em;
+        margin-bottom: 5px;
     }
 
     header p {
         font-size: 1em;
     }
 
-    .timer-circle {
-        width: 200px;
-        height: 200px;
-    }
-
-    .timer-text .time {
-        font-size: 2.5em;
+    .main-content {
+        gap: 15px;
+        margin-bottom: 20px;
     }
 
     .timer-display {
-        padding: 20px;
+        padding: 25px 15px;
+        min-height: auto;
     }
 
-    .settings-panel {
-        padding: 20px;
+    .timer-circle {
+        width: 260px;
+        height: 260px;
+        margin: 15px 0;
+    }
+
+    .timer-text .time {
+        font-size: 3.2em;
+    }
+
+    .timer-text .label {
+        font-size: 0.85em;
+    }
+
+    .phase-indicator {
+        font-size: 1.2em;
+        padding: 8px 15px;
+        margin-bottom: 15px;
+        min-width: 160px;
+    }
+
+    .stats {
+        gap: 15px;
+        margin: 15px 0;
+    }
+
+    .stat-value {
+        font-size: 1.7em;
+    }
+
+    .controls {
+        gap: 8px;
+        margin-top: 15px;
     }
 
     .btn {
         padding: 10px 15px;
-        font-size: 0.85em;
+        font-size: 0.8em;
     }
 
-    .stats {
-        flex-direction: column;
-        gap: 10px;
+    .settings-panel {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .settings-panel h2 {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+    }
+
+    .setting-group {
+        margin-bottom: 12px;
     }
 
     .exercise-panel {
@@ -600,5 +650,50 @@ header p {
 
     .exercise-list {
         max-height: 250px;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .progress-section {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .timer-circle {
+        width: 220px;
+        height: 220px;
+        margin: 12px 0;
+    }
+
+    .timer-text .time {
+        font-size: 2.5em;
+    }
+
+    .phase-indicator {
+        font-size: 1em;
+        padding: 6px 12px;
+        min-width: 140px;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 10px;
+        margin: 12px 0;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.75em;
+        min-width: auto;
+    }
+
+    .controls {
+        gap: 6px;
     }
 }
