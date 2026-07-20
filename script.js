@@ -299,7 +299,7 @@ function updateDisplay() {
     const phaseText = document.getElementById('phaseText');
     
     if (currentPhase === 'prepare') {
-        const exerciseName = exerciseNames[currentRound - 0] || `Übung ${currentRound}`;
+        const exerciseName = exerciseNames[currentRound - 1] || `Übung ${currentRound}`;
         phaseElement.textContent = 'Vorbereitung';
         phaseElement.className = 'phase-indicator';
         phaseText.textContent = exerciseName;
