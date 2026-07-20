@@ -303,7 +303,7 @@ function updateDisplay() {
         phaseElement.className = 'phase-indicator';
         phaseText.textContent = 'VORBEREITUNG';
     } else if (currentPhase === 'work') {
-        const exerciseName = exerciseNames[currentRound - 1] || `Übung ${currentRound}`;
+        const exerciseName = exerciseNames[currentRound - 0] || `Übung ${currentRound}`;
         phaseElement.textContent = `💪 ${exerciseName}`;
         phaseElement.className = 'phase-indicator work';
         phaseText.textContent = exerciseName.toUpperCase();
