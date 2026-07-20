@@ -9,14 +9,14 @@
 <body>
     <div class="container">
         <header>
-            <h1>⏱️ Workout Timer</h1>
+            <h1>Workout Timer</h1>
             <p>HIIT Interval Training</p>
         </header>
 
         <div class="main-content">
             <!-- Settings Panel -->
             <div class="settings-panel">
-                <h2>⚙️ Einstellungen</h2>
+                <h2>Einstellungen</h2>
                 
                 <div class="setting-group">
                     <label for="rounds">Runden:</label>
@@ -96,16 +96,16 @@
                         <span class="stat-value" id="currentRound">1</span>/<span id="totalRounds">5</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-label">Phase</span>
-                        <span class="stat-value" id="phaseText">VORBEREITUNG</span>
+                        <span class="stat-label">Als Nächstes</span>
+                        <span class="stat-value" id="phaseText">Übung 1</span>
                     </div>
                 </div>
 
                 <!-- Controls -->
                 <div class="controls">
-                    <button class="btn btn-primary" id="startBtn" onclick="startTimer()">▶️ Start</button>
-                    <button class="btn btn-secondary" id="pauseBtn" onclick="pauseTimer()" disabled>⏸️ Pause</button>
-                    <button class="btn btn-danger" onclick="resetTimer()">🔄 Zurücksetzen</button>
+                    <button class="btn btn-primary" id="startBtn" onclick="startTimer()">Start</button>
+                    <button class="btn btn-secondary" id="pauseBtn" onclick="pauseTimer()" disabled>Pause</button>
+                    <button class="btn btn-danger" onclick="resetTimer()">Zurücksetzen</button>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
 
         <!-- Exercise Naming Panel -->
         <div class="exercise-panel" id="exercisePanel">
-            <h2>📝 Übungen benennen</h2>
+            <h2>Übungen benennen</h2>
             <div class="exercise-list" id="exerciseList"></div>
             <button class="btn btn-primary" onclick="toggleExercisePanel()">✓ Fertig</button>
         </div>
