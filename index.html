@@ -54,6 +54,12 @@
                     </div>
                 </div>
 
+                <div class="setting-group">
+                    <button class="btn-toggle" onclick="toggleExercisePanel()" id="toggleExerciseBtn">
+                        📝 Übungen benennen
+                    </button>
+                </div>
+
                 <div class="setting-group checkbox">
                     <label>
                         <input type="checkbox" id="soundEnabled" checked>
@@ -111,6 +117,13 @@
                 <div class="progress-fill" id="progressFill"></div>
             </div>
             <div class="progress-text" id="progressText">0%</div>
+        </div>
+
+        <!-- Exercise Naming Panel -->
+        <div class="exercise-panel" id="exercisePanel">
+            <h2>📝 Übungen benennen</h2>
+            <div class="exercise-list" id="exerciseList"></div>
+            <button class="btn btn-primary" onclick="toggleExercisePanel()">✓ Fertig</button>
         </div>
     </div>
 
